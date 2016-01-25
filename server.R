@@ -29,8 +29,7 @@ shinyServer(function(input, output) {
     fit <- frfast(form, data = barnacle, nboot = 100, kernel = input$kernel,
                   h0 = h0, h = h)
     plot(fit, der = as.numeric(input$der), points = input$show_points, 
-         CIcol = input$colci, col = input$colmu, CIlwd = 2, 
-         ablinecol = "#24281A")
+         CIcol = input$colci, col = input$colmu, CIlwd = 2, ablinecol = "#24281A")
     
   })
   
