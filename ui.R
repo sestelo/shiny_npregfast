@@ -1,6 +1,7 @@
 library(shiny)
 library(shinyjs)
 library(wesanderson)
+library(npregfast)
 
 shinyUI(fluidPage(
   title = "Demo of npregfast",
