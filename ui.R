@@ -1,6 +1,9 @@
 library(shiny)
 library(shinyjs)
+library(npregfast)
+library(miniUI)
 library(wesanderson)
+
 
 shinyUI(fluidPage(
   title = "Demo of npregfast",
@@ -23,7 +26,7 @@ shinyUI(fluidPage(
   div(id = "loading-content", h2("Loading...")),
   
   fluidRow(id = "app-content",
-           column(3, wellPanel(
+           column(2, wellPanel(
              class = "settings",
              h4(class = "settings-title", "Estimation"),
              
@@ -36,6 +39,13 @@ shinyUI(fluidPage(
                          choices = c("Epanechnikov" = "epanech", 
                                      "Gaussian" = "gaussian",
                                      "Triangular" = "triang")),
+             
+             selectInput(inputId = "poly",
+                         label = "Polynomial degree:",
+                         choices = c(1, 
+                                     2,
+                                     3),
+                         selected = 3),
              
              radioButtons(inputId = "selband",
                           label = "Bandwidth selection:",
@@ -51,7 +61,8 @@ shinyUI(fluidPage(
                            max = 1,
                            value = 0.5,
                            step = 0.1, 
-                           ticks = TRUE))
+                           ticks = TRUE,
+                           animate = TRUE))
              
            )),
            
@@ -59,16 +70,42 @@ shinyUI(fluidPage(
            
            
            
-           column(3, wellPanel(
+           column(2, wellPanel(
              class = "settings",
              h4(class = "settings-title", "Graphical"),
              
-             checkboxGroupInput(inputId = "der",
+            
+             conditionalPanel(
+               condition = "input.poly == 1",
+              checkboxGroupInput(inputId = "der1",
                           label = "Output:",
-                          choices = c("Conditional mean" = 0, 
-                                      "First derivative" = 1,
-                                      "Second derivative" = 2),
-                          selected = 0),
+                          choices = c("Conditional mean" = '0'),
+                          selected = '0')),
+             
+             
+             
+             conditionalPanel(
+               condition = "input.poly == 2",
+               checkboxGroupInput(inputId = "der2",
+                                  label = "Output:",
+                                  choices = c("Conditional mean" = '0', 
+                                              "First derivative" = '1'),
+                                  selected = '0')),
+             
+             
+             conditionalPanel(
+               condition = "input.poly == 3",
+               checkboxGroupInput(inputId = "der3",
+                                  label = "Output:",
+                                  choices = c("Conditional mean" = '0', 
+                                              "First derivative" = '1',
+                                              "Second derivative" = '2'),
+                                  selected = '0')),
+             
+             
+             
+             
+  
              
              
              
@@ -89,9 +126,10 @@ shinyUI(fluidPage(
              ),
              
              
+           
           
              conditionalPanel(
-               condition ="input.der.length > 1 & ",
+               condition ="input.der[0] == '0'",
              checkboxInput("show_points", "Show data points", TRUE))
              
              
@@ -99,13 +137,23 @@ shinyUI(fluidPage(
            
            
            
-           column(6,
-                  plotOutput("distPlot", height = "550px", width = "100%"),
-                  textOutput({"text"}),
-                  textOutput({"text2"})
+           column(8,
+                  plotOutput("distPlot", 
+                             height = "500px", 
+                             width = "100%",
+                             click = "plot1_click",
+                             brush = brushOpts(id = "plot1_brush"),
+                  ),
+                  
+                  miniButtonBlock(
+                    actionButton("exclude_toggle", "Toggle points"),
+                    actionButton("exclude_reset", "Reset")
+                  )
+                 
                   
                   
            )
+           
   )
 ))
 
