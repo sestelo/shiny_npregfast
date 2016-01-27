@@ -91,7 +91,7 @@ shinyUI(fluidPage(
              
           
              conditionalPanel(
-               condition ="input.der.length > 1 & ",
+               condition ="input.der.length > 2 & ",
              checkboxInput("show_points", "Show data points", TRUE))
              
              
