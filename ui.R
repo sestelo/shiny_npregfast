@@ -2,7 +2,7 @@ library(shiny)
 library(shinyjs)
 library(wesanderson)
 
-
+#nada
 shinyUI(fluidPage(
   title = "Demo of npregfast",
   tags$head(includeCSS(file.path('style', 'style.css'))),   
