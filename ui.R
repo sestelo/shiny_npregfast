@@ -125,12 +125,19 @@ shinyUI(fluidPage(
                  
              ),
              
-             
-           
-          
              conditionalPanel(
                condition ="input.der[0] == '0'",
-             checkboxInput("show_points", "Show data points", TRUE))
+               checkboxInput("show_points", "Show data points", TRUE)),
+             
+                 conditionalPanel(
+                   condition ="input.show_points == 'TRUE'",
+                   shinyjs::colourInput("colp", "Points color", "#5B1A18", 
+                                       showColour = "background",
+                                       palette = "limited",
+                                       allowedCols = unlist(wes_palettes),
+                                       allowTransparent = FALSE))
+            
+             
              
              
            )),
