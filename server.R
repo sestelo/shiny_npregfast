@@ -41,12 +41,14 @@ shinyServer(function(input, output) {
     if(input$poly == 2) {der <- as.numeric(input$der2)}
     if(input$poly == 3) {der <- as.numeric(input$der3)}
     
+    
+    
   
     fit <- frfast(form, data = keep, nboot = 100, kernel = input$kernel,
                   h0 = h0, h = h, p = input$poly)
     plot(fit, der = der, points = input$show_points, 
          CIcol = input$colci, col = input$colmu, CIlwd = 2, 
-         ablinecol = "#24281A", pch = 16)
+         ablinecol = "#24281A", pch = 16, pcol = input$pcol)
     
   })
   

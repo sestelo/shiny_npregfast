@@ -74,15 +74,12 @@ shinyUI(fluidPage(
              class = "settings",
              h4(class = "settings-title", "Graphical"),
              
-            
              conditionalPanel(
                condition = "input.poly == 1",
               checkboxGroupInput(inputId = "der1",
                           label = "Output:",
                           choices = c("Conditional mean" = '0'),
                           selected = '0')),
-             
-             
              
              conditionalPanel(
                condition = "input.poly == 2",
@@ -91,8 +88,7 @@ shinyUI(fluidPage(
                                   choices = c("Conditional mean" = '0', 
                                               "First derivative" = '1'),
                                   selected = '0')),
-             
-             
+
              conditionalPanel(
                condition = "input.poly == 3",
                checkboxGroupInput(inputId = "der3",
@@ -101,14 +97,10 @@ shinyUI(fluidPage(
                                               "First derivative" = '1',
                                               "Second derivative" = '2'),
                                   selected = '0')),
+
+          
              
-             
-             
-             
-  
-             
-             
-             
+
              div(id = "marginal-settings",
                  shinyjs::colourInput("colmu", "Line color", "#D67236", 
                                       showColour = "background",
@@ -122,25 +114,21 @@ shinyUI(fluidPage(
                                       palette = "limited",
                                       allowedCols = unlist(wes_palettes),
                                       allowTransparent = FALSE)
-                 
-             ),
+                 ),
              
              conditionalPanel(
-               condition ="input.der[0] == '0'",
-               checkboxInput("show_points", "Show data points", TRUE)),
-             
-                 conditionalPanel(
-                   condition ="input.show_points == 'TRUE'",
-                   shinyjs::colourInput("colp", "Points color", "#5B1A18", 
-                                       showColour = "background",
-                                       palette = "limited",
-                                       allowedCols = unlist(wes_palettes),
-                                       allowTransparent = FALSE))
-            
-             
-             
-             
-           )),
+               condition ="input.poly == 1 & input.der1[0] == '0'||input.poly == 2 & input.der2[0] == '0'||input.poly == 3 & input.der3[0] == '0'",
+               checkboxInput("show_points", "Show data points", TRUE),
+               conditionalPanel(
+                 condition ="input.show_points == true",
+                 shinyjs::colourInput("pcol", "Points color", "#D5D5D3", 
+                                      showColour = "background",
+                                      palette = "limited",
+                                      allowedCols = unlist(wes_palettes),
+                                      allowTransparent = FALSE)
+                 )
+               )
+             )),
            
            
            
@@ -155,7 +143,9 @@ shinyUI(fluidPage(
                   miniButtonBlock(
                     actionButton("exclude_toggle", "Toggle points"),
                     actionButton("exclude_reset", "Reset")
-                  )
+                  ),
+                  
+                  includeMarkdown("plot_shiny.md")
                  
                   
                   
