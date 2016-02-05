@@ -141,13 +141,21 @@ shinyUI(fluidPage(
                   ),
                   
                   miniButtonBlock(
-                    actionButton("exclude_toggle", "Toggle points"),
-                    actionButton("exclude_reset", "Reset"),
-                    actionButton("info_btn", "Information")
-                  ),
+                   
+                    
+                    actionButton("exclude_toggle", "Toggle points",
+                                 icon = icon("fa fa-codiepie", class = "fa-1x")),
+                    
+                    actionButton("exclude_reset", "Reset", 
+                                 icon = icon("fa fa-refresh", class = "fa-1x")),
+                    actionButton(inputId ="info_btn", 
+                                 label = "Info", 
+                                 icon = icon("fa fa-info-circle", class = "fa-1x"))
+                    
+                  )
                   
                   
-                  includeMarkdown("plot_shiny.md")
+                 # includeMarkdown("plot_shiny.md")
                   
                   
                   
