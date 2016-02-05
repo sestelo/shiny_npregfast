@@ -142,10 +142,11 @@ shinyUI(fluidPage(
                   
                   miniButtonBlock(
                     actionButton("exclude_toggle", "Toggle points"),
-                    actionButton("exclude_reset", "Reset")
+                    actionButton("exclude_reset", "Reset"),
+                    actionButton("info_btn", "Information")
                   ),
                   
-              
+                  
                   includeMarkdown("plot_shiny.md")
                   
                   
