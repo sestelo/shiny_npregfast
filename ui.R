@@ -11,14 +11,14 @@ shinyUI(fluidPage(
   useShinyjs(),
   
   fluidRow(id = "title-row",
-      column(12,
-        h1("Demo of",em(a("npregfast", href = "https://github.com/sestelo/npregfast"))),
-        h4("Example with", a("barnacle", href = "https://github.com/sestelo/npregfast/blob/master/man/barnacle.Rd")," data set"),
-        div("Created by", a("Marta Sestelo", href = "http://sestelo.github.io"),
-            "and", a("Nora M. Villanueva",href = "http://noramvillanueva.github.io"), HTML("&bull;"),
-            "Code on", a("GitHub", href = "https://github.com/sestelo/shiny_npregfast/")
-            )
-      )
+           column(12,
+                  h1("Demo of",em(a("npregfast", href = "https://github.com/sestelo/npregfast"))),
+                  h4("Example with", a("barnacle", href = "https://github.com/sestelo/npregfast/blob/master/man/barnacle.Rd")," data set"),
+                  div("Created by", a("Marta Sestelo", href = "http://sestelo.github.io"),
+                      "and", a("Nora M. Villanueva",href = "http://noramvillanueva.github.io"), HTML("&bull;"),
+                      "Code on", a("GitHub", href = "https://github.com/sestelo/shiny_npregfast/")
+                  )
+           )
   ),
   
   
@@ -76,10 +76,10 @@ shinyUI(fluidPage(
              
              conditionalPanel(
                condition = "input.poly == 1",
-              checkboxGroupInput(inputId = "der1",
-                          label = "Output:",
-                          choices = c("Conditional mean" = '0'),
-                          selected = '0')),
+               checkboxGroupInput(inputId = "der1",
+                                  label = "Output:",
+                                  choices = c("Conditional mean" = '0'),
+                                  selected = '0')),
              
              conditionalPanel(
                condition = "input.poly == 2",
@@ -88,7 +88,7 @@ shinyUI(fluidPage(
                                   choices = c("Conditional mean" = '0', 
                                               "First derivative" = '1'),
                                   selected = '0')),
-
+             
              conditionalPanel(
                condition = "input.poly == 3",
                checkboxGroupInput(inputId = "der3",
@@ -97,10 +97,10 @@ shinyUI(fluidPage(
                                               "First derivative" = '1',
                                               "Second derivative" = '2'),
                                   selected = '0')),
-
-          
              
-
+             
+             
+             
              div(id = "marginal-settings",
                  shinyjs::colourInput("colmu", "Line color", "#D67236", 
                                       showColour = "background",
@@ -114,7 +114,7 @@ shinyUI(fluidPage(
                                       palette = "limited",
                                       allowedCols = unlist(wes_palettes),
                                       allowTransparent = FALSE)
-                 ),
+             ),
              
              conditionalPanel(
                condition ="input.poly == 1 & input.der1[0] == '0'||input.poly == 2 & input.der2[0] == '0'||input.poly == 3 & input.der3[0] == '0'",
@@ -126,9 +126,9 @@ shinyUI(fluidPage(
                                       palette = "limited",
                                       allowedCols = unlist(wes_palettes),
                                       allowTransparent = FALSE)
-                 )
                )
-             )),
+             )
+           )),
            
            
            
@@ -145,8 +145,9 @@ shinyUI(fluidPage(
                     actionButton("exclude_reset", "Reset")
                   ),
                   
+              
                   includeMarkdown("plot_shiny.md")
-                 
+                  
                   
                   
            )
