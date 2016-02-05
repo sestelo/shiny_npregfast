@@ -142,7 +142,7 @@ shinyUI(fluidPage(
                   
                   miniButtonBlock(
                    
-                    
+                    br(),
                     actionButton("exclude_toggle", "Toggle points",
                                  icon = icon("fa fa-codiepie", class = "fa-1x")),
                     
