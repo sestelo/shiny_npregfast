@@ -1,5 +1,5 @@
 library(shiny)
-library(shinyjs)
+#library(shinyjs)
 library(npregfast)
 library(miniUI)
 library(wesanderson)
@@ -80,5 +80,5 @@ shinyServer(function(input, output) {
   
   
   # hide the loading message
-  hide("loading-content", TRUE, "fade")
+  shinyjs::hide("loading-content", TRUE, "fade")
 })
