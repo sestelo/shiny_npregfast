@@ -1,5 +1,5 @@
 library(shiny)
-library(shinyjs)
+#library(shinyjs)
 library(npregfast)
 library(miniUI)
 library(wesanderson)
@@ -7,8 +7,8 @@ library(wesanderson)
 
 shinyUI(fluidPage(
   title = "Demo of npregfast",
-  tags$head(includeCSS(file.path('style', 'style.css'))),   
-  useShinyjs(),
+  tags$head(includeCSS(file.path('www', 'style.css'))),   
+  shinyjs::useShinyjs(),
   
   fluidRow(id = "title-row",
            column(12,
