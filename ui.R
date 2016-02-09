@@ -1,8 +1,9 @@
+#detach("package:npregfast")
 library(shiny)
 #library(shinyjs)
-library(npregfast)
 library(miniUI)
 library(wesanderson)
+library(npregfast)
 
 
 shinyUI(fluidPage(
@@ -162,6 +163,7 @@ shinyUI(fluidPage(
            
   )
 ))
+
 
 
 

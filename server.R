@@ -1,8 +1,9 @@
+#detach("package:npregfast")
 library(shiny)
 #library(shinyjs)
-library(npregfast)
 library(miniUI)
 library(wesanderson)
+library(npregfast)
 
 
 
@@ -74,7 +75,7 @@ shinyServer(function(input, output) {
   })
   
   observeEvent(input$info_btn, {
-    info("This plot supports mouse based-interaction,  via clicking and brushing. The points selected or included in the selected area will be deleted and will not be considered in the analysis. In order to use this option correctly, the selection of the points must be carried out with only one graphical output marked. Once the points have been deleted, the other graphical output options can be marked.")
+    shinyjs::info("This plot supports mouse based-interaction,  via clicking and brushing. The points selected or included in the selected area will be deleted and will not be considered in the analysis. In order to use this option correctly, the selection of the points must be carried out with only one graphical output marked. Once the points have been deleted, the other graphical output options can be marked.")
       })
   
   
@@ -82,3 +83,5 @@ shinyServer(function(input, output) {
   # hide the loading message
   shinyjs::hide("loading-content", TRUE, "fade")
 })
+
+
