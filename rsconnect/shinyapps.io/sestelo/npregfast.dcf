@@ -1,8 +1,8 @@
 name: npregfast
 account: sestelo
 server: shinyapps.io
-bundleId: 369508
+bundleId: 371450
 url: https://sestelo.shinyapps.io/npregfast/
-when: 1455047390.1319
+when: 1455272609.67432
 asMultiple: FALSE
 asStatic: FALSE
