@@ -1,0 +1,10 @@
+name: npregfast
+title: npregfast
+username: sestelo
+account: sestelo
+server: connect.posit.cloud
+hostUrl: https://api.connect.posit.cloud/v1
+appId: 01a1a7cb-fd00-3e93-0dba-4d1f0047361d
+bundleId:
+url: https://connect.posit.cloud/sestelo/content/01a1a7cb-fd00-3e93-0dba-4d1f0047361d
+version: 1
